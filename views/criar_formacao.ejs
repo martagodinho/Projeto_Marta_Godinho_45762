@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-pt">
+<head>
+	<meta charset="UTF-8">
+	<title>Centro Académico Clínico das Beiras</title>
+  <style>
+    input[type="date"]{
+    padding: 1%;
+    border-radius: 5px;
+    border-color: #ccc;
+}
+  </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style_forms.css">
+</head>
+<body id="page-content">
+    
+    <header>
+        <div class="logo">
+          
+        </div>
+        <nav>
+            <ul>
+              <li><a href="/login">Terminar sessão</a></li>
+            </ul>
+          </nav>
+    </header>
+
+	<main>
+    <h1>Criar Formação</h1>
+    <script>
+      function validateDates() {
+        let startDateInput = document.getElementById('data_inicio');
+        let endDateInput = document.getElementById('data_fim');
+        let startDate = new Date(startDateInput.value);
+        let endDate = new Date(endDateInput.value);
+    
+        if (endDate < startDate) {
+          endDateInput.setCustomValidity('A data de fim deve ser posterior à data de início.');
+        } else {
+          endDateInput.setCustomValidity('');
+        }
+      }
+    </script>
+    <table class="tabela">
+      <tr>
+        <td class="bt_publicar">
+          <form action="/nova_formacao" method="POST">
+            <label for="nome_formacao">Nome da Formação:</label>
+            <input type="text" id="nome_formacao" name="nome_formacao" maxlength="50" placeholder="Nome" required>
+    
+            <label for="texto_explicativo">Descrição:</label>
+            <textarea id="texto_explicativo" name="texto_explicativo" maxlength="5000" rows="7" placeholder="Texto explicativo" style="font-size: 16px;" required></textarea>
+    
+            <label for="area_formacao" class="campos_forms">Área de Formação:</label>
+            <input type="text" id="area_formacao" name="area_formacao" maxlength="50" placeholder="Área" required>
+    
+            <label for="max_inscricoes" class="campos_forms">Número máximo de inscrições (se não tiver número máximo colocar 0):</label>
+            <input type="number" id="max_inscricoes" name="max_inscricoes" required>
+    
+            <label for="link_insc" class="campos_forms">Link para inscrição: </label>
+            <input type="text" id="link_insc" name="link_insc" placeholder="Link">
+    
+            <label for="duracao" class="campos_forms">Duração da formação (em horas):</label>
+            <input type="number" id="duracao" name="duracao" min="1" required>
+    
+            <div class="date-container">
+                <label for="data_inicio" class="campos_forms">Data de início:</label>
+                <input type="date" id="data_inicio" name="data_inicio" required>
+          
+                <label for="data_fim" class="campos_forms">Data de fim:</label>
+                <input type="date" id="data_fim" name="data_fim" required>
+              </div>
+              <span class="error-message" id="date-error"></span>
+        </td>
+      </tr>
+      <tr style="text-align: right;">
+        <td>
+          <div class="button-group">
+            <button type="button" class="btn-cancelar" onclick="window.location.href='/cancelar'">Cancelar</button>
+            <button type="submit" class="btn-publicar">Publicar</button>
+          </div>
+        </td>
+      </tr>
+      </form>
+    </table>
+    
+    <div id="user-info" data-id="<%= id_utilizador %>"></div>
+    
+	</main>
+	
+	
+  <script src="script_traducao.js"></script>
+  <script>
+    let startDateInput = document.getElementById('data_inicio');
+    let endDateInput = document.getElementById('data_fim');
+    let errorMessage = document.getElementById('date-error');
+  
+    startDateInput.addEventListener('input', validateDates);
+    endDateInput.addEventListener('input', validateDates);
+  </script>
+</body>
+</html>

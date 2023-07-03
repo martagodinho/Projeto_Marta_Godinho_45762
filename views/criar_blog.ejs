@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-pt">
+<head>
+	<meta charset="UTF-8">
+	<title>Centro Académico Clínico das Beiras</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style_forms.css">
+</head>
+<body id="page-content">
+    
+    <header>
+        <div class="logo">
+          
+        </div>
+        <nav>
+            <ul>
+              <li><a href="/login">Terminar sessão</a></li>
+            </ul>
+          </nav>
+    </header>
+
+	<main>
+    <h1>Criar Post Blog</h1>
+    <table class="tabela">
+      <tr>
+        <td class="bt_publicar">
+          <form action="/novo_blog" method="POST" enctype="multipart/form-data">
+            <label for="titulo_blog">Título:</label>
+            <input type="text" id="titulo_blog" name="titulo_blog" maxlength="200" placeholder="Título" required>
+    
+            <label for="texto_blog">Texto:</label>
+            <textarea id="texto_blog" name="texto_blog" maxlength="5000" rows="7" placeholder="Corpo" style="font-size:16px" required></textarea>
+    
+            <label for="autor_blog" class="campos_forms">Autor:</label>
+            <input type="text" id="autor_blog" name="autor_blog" maxlength="50" placeholder="Primeiro e último nome" required>
+    
+            <label for="tag1" class="campos_forms">Tag 1 (opcional):</label>
+            <input type="text" id="tag1" name="tag1" placeholder="Tema do post">
+    
+            <label for="tag2" class="campos_forms">Tag 2 (opcional):</label>
+            <input type="text" id="tag2" name="tag2" placeholder="Tema do post">
+    
+            <label for="tag3" class="campos_forms">Tag 3 (opcional):</label>
+            <input type="text" id="tag3" name="tag3" placeholder="Tema do post">
+    
+            <label for="imagem" class="campos_forms">Imagem (opcional):</label>
+            <input type="file" id="imagem" name="imagem" accept="image/*">
+        </td>
+      </tr>
+      <tr style="text-align: right;">
+        <td>
+          <div class="button-group">
+            <button type="button" class="btn-cancelar" onclick="window.location.href='/cancelar'">Cancelar</button>
+            <button type="submit" class="btn-publicar">Publicar</button>
+          </div>
+        </td>
+      </tr>
+      </form>
+    </table>
+    
+    <div id="user-info" data-id="<%= id_utilizador %>"></div>
+    
+	</main>
+	
+	
+  <script src="script_traducao.js"></script>
+</body>
+</html>

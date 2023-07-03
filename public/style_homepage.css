@@ -1,0 +1,420 @@
+/* ECRÃ COM DIMENSÃO IGUAL OU MAIOR QUE 769PX */
+@media (min-width: 769px) {
+    .menu-toggle {
+      display: none;
+    }
+    
+    /* Ocultar o label em telas maiores */
+    label[for="menu-toggle"] {
+      display: none;
+    }
+    footer .rodape {
+      margin-left: 100px;
+    }
+  
+    footer .rodape span {
+      width: 50%;
+    }
+  
+    #ultima {
+      margin-left: 100px;
+    }
+  }
+  
+  /* Body */
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    padding-bottom: 0;
+    background-color: #f8f8f8;
+  }
+  
+  /* Header */
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #f8f8f8;
+    color: #151515;
+    padding: 10px;
+  }
+  
+  /* NAV BAR */
+  .logo {
+    margin-right: 10px;
+    margin-left: 40px;
+  }
+  
+  nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  nav ul li {
+    display: inline-block;
+    position: relative;
+  }
+  
+  nav ul li a {
+    display: block;
+    padding: 10px;
+    color: #151515;
+    text-decoration: none;
+  }
+  
+  nav ul li ul {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #f8f8f8;
+    padding: 2px;
+    margin: 0;
+    border: 1px solid #8a8a8a;
+    border-radius: 5px;
+  }
+  
+  nav ul li:hover ul {
+    display: block;
+  }
+  
+  nav ul li ul li {
+    display: block;
+  }
+  
+  nav ul li ul li a {
+    padding: 10px;
+    color: #151515;
+    text-decoration: none;
+  }
+  
+  nav ul li ul li:hover {
+    background-color: #cfcfcf;
+  }
+  
+  #login_nav {
+    color: rgb(188, 188, 188);
+  }
+  
+  /* ECRÃS COM DIMENSÃO IGUAL OU MENOR QUE 768PX */
+  /* ECRÃS COM DIMENSÃO IGUAL OU MENOR QUE 768PX */
+  @media (max-width: 768px) {
+    /* HEADER */
+    header {
+      position: relative;
+    }
+  
+    .menu-toggle {
+      display: none;
+    }
+  
+    .menu-toggle:checked ~ nav {
+      display: block;
+    }
+  
+    nav {
+      display: none;
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background-color: #f8f8f8;
+      padding: 2px;
+      margin: 0;
+      border: 1px solid #8a8a8a;
+      border-radius: 5px;
+      z-index: 9999;
+    }
+  
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+  
+    nav ul li {
+      display: block;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+  
+    nav ul li a {
+      display: block;
+      padding: 10px;
+      color: #151515;
+      text-decoration: none;
+    }
+  
+    nav ul li:hover ul {
+      display: none;
+      left: auto;
+      right: 0;
+    }
+  
+    nav ul li:hover ul,
+  nav ul li ul li:hover ul {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 100%;
+    background-color: #f8f8f8;
+    padding: 2px;
+    margin: 0;
+    border: 1px solid #8a8a8a;
+    border-radius: 5px;
+  }
+  
+    
+    /* Estilo do ícone do menu hamburguer */
+    .menu-toggle:checked + label {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      z-index: 9999;
+    }
+  
+    .menu-toggle:checked + label span {
+      display: block;
+    }
+  
+    .menu-toggle:checked + label span:before,
+    .menu-toggle:checked + label span:after {
+      background-color: #151515;
+      content: "";
+      display: block;
+      height: 2px;
+      width: 100%;
+      position: absolute;
+      transition-duration: 0.25s;
+    }
+  
+    .menu-toggle:checked + label span:before {
+      top: -8px;
+    }
+  
+    .menu-toggle:checked + label span:after {
+      bottom: -8px;
+    }
+  
+    .menu-toggle:checked + label span:hover:before,
+    .menu-toggle:checked + label span:hover:after {
+      background-color: #084b7f;
+    }
+  
+    .menu-toggle:checked + label span:before {
+      transform: rotate(45deg);
+    }
+  
+    .menu-toggle:checked + label span:after {
+      transform: rotate(-45deg);
+    }
+  
+    .menu-toggle:checked + label span:hover:before {
+      transform: rotate(225deg);
+    }
+  
+    .menu-toggle:checked + label span:hover:after {
+      transform: rotate(-225deg);
+    }
+  
+    /* Posicionamento da barra de navegação ao lado do ícone do menu */
+    .menu-toggle:checked ~ nav .nav-bar {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      margin-top: 10px;
+    }
+  
+    .menu-toggle:checked ~ nav .nav-bar ul {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      width: 100%;
+      margin-top: 10px;
+    }
+  
+    .menu-toggle:checked ~ nav .nav-bar ul li {
+      display: block;
+      margin-bottom: 10px;
+    }
+  
+    .menu-toggle:checked ~ nav .nav-bar ul li a {
+      display: block;
+      padding: 10px;
+      color: #151515;
+      text-decoration: none;
+    }
+    footer .rodape {
+      justify-content: center;
+      margin-left: 0;
+    }
+  
+    footer .rodape span {
+      width: 100%;
+    }
+  
+    #ultima {
+      text-align: center;
+      margin-left: 0;
+    }
+  }
+  
+  
+  /* FOOTER */
+  footer {
+    background-color: #b6b6b6;
+    color: #292929;
+    /*position: fixed;*/
+    bottom: 0;
+    width: 100%;
+    margin-top: 3%;
+    padding-block: 1.5%;
+  }
+  
+  footer .rodape {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-left: 100px;
+  }
+  
+  footer .rodape span {
+    margin-top: 10px;
+    width: 50%;
+    margin-bottom: 10px;
+    font-size: 15px;
+  }
+  
+  #ultima {
+    text-align: left;
+    margin-top: 0px;
+    margin-left: 100px;
+    margin-bottom: 0;
+    font-size: 11px;
+  }
+  
+  /* FOOTER FIXO */
+  .footer_fixo {
+    background-color: #b6b6b6;
+    color: #292929;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    margin-top: 3%;
+    padding-block: 1.5%;
+  }
+  
+  /* HOME PAGE */
+  main {
+    padding-inline: 20px;
+    max-width: 80%;
+    margin-left: 15%;
+    margin-right: 15%;
+    text-align: justify;
+  }
+  
+  /* VISÃO E MISSÃO */
+  .titulo_pagina {
+    font-family: Arial, sans-serif;
+  }
+  
+  .texto_visao {
+    font-family: Arial, sans-serif;
+    text-align: justify;
+  }
+  
+  /* SOBRE NÓS */
+  .texto_sobre {
+    text-align: justify;
+  }
+  
+  .links {
+    text-decoration: underline;
+    color: #151515;
+  }
+  
+  .links:hover {
+    color: #084b7f;
+  }
+  
+  /* CONTACTOS E LOCALIZAÇÃO */
+  .nome_pres {
+    font-weight: bold;
+  }
+  
+  .tabela_cont {
+    text-align: left;
+    margin-right: 2%;
+  }
+  
+  #item_cont {
+    font-weight: bold;
+  }
+  
+  /* MAIN */
+  .tabela_pp {
+    width: 100%;
+    border-collapse: separate;
+  }
+  
+  .tabela_pp td {
+    width: 33.33%;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .box {
+    margin: 3%;
+    padding: 5%;
+    box-sizing: border-box;
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+  }
+  
+  .h3_pp {
+    font-size: larger;
+  }
+  
+  button {
+    padding: 3%;
+    border: none;
+    display: block;
+    text-decoration: none;
+    color: #f8f8f8;
+    background-color: #189fde;
+    margin-bottom: 6%;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    color: #f8f8f8;
+    background-color: #1279a9;
+  }
+  
+  .bt_editar {
+    padding: 3%;
+    border: none;
+    display: block;
+    text-decoration: none;
+    color: #f8f8f8;
+    background-color: #e9b606;
+    margin-bottom: 6%;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .bt_editar:hover {
+    color: #f8f8f8;
+    background-color: #c49a02;
+  }

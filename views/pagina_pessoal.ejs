@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-pt">
+<head>
+	<meta charset="UTF-8">
+	<title>Centro Académico Clínico das Beiras</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body id="page-content">
+    
+    <header>
+        <div class="logo">
+          
+        </div>
+        <nav>
+            <ul>
+                <li><a href="/editar_perfil">Editar Perfil</a></li>
+                <li><a href="/logout">Terminar sessão</a></li>
+            </ul>
+          </nav>
+    </header>
+
+	<main>
+        <h1>Bem-vindo(a) <%= nome_utilizador %></h1>
+        <table class="tabela_pp">
+            <tr>
+                <td>
+                    <% if (priv_utilizador && priv_utilizador.evento) { %>
+                    <div class="box" id="eventoBox" style="display: none;">
+                        <h3 class="h3_pp">Evento</h3>
+                        <button type="button" onclick="window.location.href='/criar_evento'">Criar Evento</button>
+                        <button type="button" class="bt_editar" onclick="window.location.href='/ver_eventos'">Ver Eventos criados</button>
+                    </div>
+                    <% } %>
+                </td>
+                <td>
+                    <% if (priv_utilizador && priv_utilizador.blog) { %>
+                    <div class="box" id="blogBox" style="display: none;">
+                        <h3 class="h3_pp">Blog</h3>
+                        <button type="button" onclick="window.location.href='/post_blog'">Criar post para Blog</button>
+                        <button type="button" class="bt_editar" onclick="window.location.href='/ver_blogs'">Ver posts de Blog criados</button>
+                    </div>
+                    <% } %>
+                </td>
+                <td>
+                    <% if (priv_utilizador && priv_utilizador.formacao) { %>
+                    <div class="box" id="formacaoBox" style="display: none;">
+                        <h3 class="h3_pp">Formação</h3>
+                        <button type="button" onclick="window.location.href='/criar_formacao'">Criar Formação</button>
+                        <button type="button" class="bt_editar" onclick="window.location.href='/ver_formacoes'">Ver Formações criadas</button>
+                    </div>
+                    <% } %>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <% if (priv_utilizador && priv_utilizador.ensaio_clinico) { %>
+                    <div class="box" id="ensaioBox" style="display: none;">
+                        <h3 class="h3_pp">Ensaio Clínico</h3>
+                        <button type="button" onclick="window.location.href='/criar_ensaio'">Criar Ensaio Clínico</button>
+                        <button type="button" class="bt_editar" onclick="window.location.href='/ver_ensaios'">Ver Ensaios Clínicos criados</button>
+                    </div>
+                    <% } %>
+                </td>
+                <td>
+                    <% if (priv_utilizador && priv_utilizador.noticia) { %>
+                    <div class="box" id="noticiasBox" style="display: none;">
+                        <h3 class="h3_pp">Notícias</h3>
+                        <button type="button" onclick="window.location.href='/criar_noticia'">Criar Notícia</button>
+                        <button type="button" class="bt_editar" onclick="window.location.href='/ver_noticias'">Ver Notícias criadas</button>
+                    </div>
+                    <% } %>
+                </td>
+                <td>
+                    <% if (priv_utilizador && priv_utilizador.newsletter) { %>
+                    <div class="box" id="newsletterBox" style="display: none;">
+                        <h3 class="h3_pp">Newsletter</h3>
+                        <button type="button" onclick="window.location.href='/criar_newsletter'">Criar post para Newsletter</button>
+                        <button type="button" class="bt_editar" onclick="window.location.href='/ver_newsletters'">Ver posts de Newsletter criados</button>
+                    </div>
+                    <% } %>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <% if (priv_utilizador && priv_utilizador.testemunho) { %>
+                    <div class="box" id="testemunhoBox" style="display: none;">
+                        <h3 class="h3_pp">Testemunhos</h3>
+                        <button type="button" onclick="window.location.href='/testemunho'">Criar Testemunho</button>
+                        <button type="button" class="bt_editar" onclick="window.location.href='/ver_testemunhos'">Ver Testemunhos criados</button>
+                    </div>
+                    <% } %>
+                </td>
+                <td>
+                    <% if (priv_utilizador && priv_utilizador.super_admin) { %>
+                    <div class="box" id="contaBox" style="display: none;">
+                        <h3 class="h3_pp">Contas</h3>
+                        <button type="button" onclick="window.location.href='/contas_aceites'">Ver Contas aceites</button>
+                        <button type="button" class="bt_editar" onclick="window.location.href='/contas_pendentes'">Ver Contas pendentes</button>
+                    </div>
+                    <% } %>
+                </td>
+            </tr>
+        </table>
+        <% if (priv_utilizador) { %>
+            <div id="user-super" data-id="<%= priv_utilizador.super_admin %>"></div>
+        <% } %>
+        <% if (priv_utilizador) { %>
+            <div id="user-newsletter" data-id="<%= priv_utilizador.newsletter %>"></div>
+        <% } %>
+        <% if (priv_utilizador) { %>
+            <div id="user-noticia" data-id="<%= priv_utilizador.noticia %>"></div>
+        <% } %>
+        <% if (priv_utilizador) { %>
+            <div id="user-evento" data-id="<%= priv_utilizador.evento %>"></div>
+        <% } %>
+        <% if (priv_utilizador) { %>
+            <div id="user-formacao" data-id="<%= priv_utilizador.formacao %>"></div>
+        <% } %>
+        <% if (priv_utilizador) { %>
+            <div id="user-blog" data-id="<%= priv_utilizador.blog %>"></div>
+        <% } %>
+        <% if (priv_utilizador) { %>
+            <div id="user-testemunho" data-id="<%= priv_utilizador.testemunho %>"></div>
+        <% } %>
+        <% if (priv_utilizador) { %>
+            <div id="user-ensaio_clinico" data-id="<%= priv_utilizador.ensaio_clinico %>"></div>
+        <% } %>
+	</main>
+	
+  <script src="script.js"></script>
+</body>
+</html>

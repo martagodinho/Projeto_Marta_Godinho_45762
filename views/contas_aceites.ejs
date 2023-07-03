@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-pt">
+<head>
+	<meta charset="UTF-8">
+	<title>Centro Académico Clínico das Beiras</title>
+    <style>
+        .conta {
+          border: 1px solid #ddd;
+          padding: 10px;
+          margin-bottom: 10px;
+          border-radius: 5px;
+          background-color: #eee;
+        }
+        .btn-editar{
+          padding: 10px;
+          border: none;
+          display: block;
+          text-decoration: none;
+          color: #f8f8f8;
+          background-color: #189fde;
+          margin-bottom: 2%;
+          border-radius: 5px;
+          font-weight: bold;
+          cursor: pointer;
+        }
+        .btn-apagar{
+          padding: 10px;
+          border: none;
+          display: block;
+          text-decoration: none;
+          color: #f8f8f8;
+          background-color: #d34c16;
+          margin-bottom: 2%;
+          border-radius: 5px;
+          font-weight: bold;
+          cursor: pointer;
+        }
+        .btn-apagar:hover{
+          padding: 10px;
+          border: none;
+          display: block;
+          text-decoration: none;
+          color: #f8f8f8;
+          background-color: #a53a10;
+          margin-bottom: 2%;
+          border-radius: 5px;
+          font-weight: bold;
+          cursor: pointer;
+        }
+      </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body id="page-content">
+    
+    <header>
+        <div class="logo">
+          
+        </div>
+        <nav>
+            <ul>
+              <li><a href="/cancelar">Página Pessoal</a></li>
+              <li><a href="/editar_perfil">Editar Pefil</a></li>
+              <li><a href="/logout">Terminar sessão</a></li>
+            </ul>
+          </nav>
+    </header>
+
+	<main>
+        <h1>Contas Aceites</h1>
+        <div id="contas-container">
+          <% contas.forEach(function(conta) { %>
+            <div class="conta">
+              <h2><%= conta.nome_utilizador %></h2>
+              <p><strong>Email:</strong> <%= conta.email %></p>
+              <p><strong>Organização:</strong> <%= conta.organizacao %></p>
+              <form action="/apagar_conta" method="POST">
+                <input type="hidden" name="contaID" value="<%= conta.idu %>">
+                <button type="submit" class="btn-apagar">Apagar</button>
+              </form>
+            </div>
+          <% }); %>
+        </div>
+	</main>
+	
+  <script src="script.js"></script>
+</body>
+</html>

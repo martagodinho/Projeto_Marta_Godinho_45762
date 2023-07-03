@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-pt">
+<head>
+	<meta charset="UTF-8">
+	<title>Centro Académico Clínico das Beiras</title>
+    <style>
+        input[type="date"]{
+        padding: 1%;
+        border-radius: 5px;
+        border-color: #ccc;
+    }
+      </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style_forms.css">
+</head>
+<body id="page-content">
+    
+    <header>
+        <div class="logo">
+          
+        </div>
+        <nav>
+            <ul>
+              <li><a href="/login">Terminar sessão</a></li>
+            </ul>
+          </nav>
+    </header>
+
+	<main>
+      <h1>Criar Newsletter</h1>
+      <table class="tabela">
+        <tr>
+          <td class="bt_publicar">
+            <form action="/nova_newsletter" method="POST" enctype="multipart/form-data">
+              <label for="titulo">Título:</label>
+              <input type="text" id="titulo" name="titulo" maxlength="70" placeholder="Título" required>
+      
+              <label for="assunto">Assunto:</label>
+              <textarea id="assunto" name="assunto" maxlength="500" rows="5" placeholder="Assunto" style="font-size: 16px;" required></textarea>
+      
+              <label for="data_publicacao" class="campos_forms">Data de publicação:</label>
+              <input type="date" id="data_publicacao" name="data_publicacao" maxlength="70" required>
+      
+              <label for="doc" class="campos_forms">Documento:</label>
+              <input type="file" id="doc" name="doc" accept=".pdf" required>
+
+          </td>
+        </tr>
+        <tr style="text-align: right;">
+          <td>
+            <div class="button-group">
+              <button type="button" class="btn-cancelar" onclick="window.location.href='/cancelar'">Cancelar</button>
+              <button type="submit" class="btn-publicar">Publicar</button>
+              
+            </div>
+          </td>
+        </tr>
+      </form>
+      </table>
+      
+      <div id="user-info" data-id="<%= id_utilizador %>"></div>
+	</main>
+	
+	
+  <script src="script_traducao.js"></script>
+</body>
+</html>

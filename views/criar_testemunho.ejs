@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-pt">
+<head>
+	<meta charset="UTF-8">
+	<title>Centro Académico Clínico das Beiras</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style_forms.css">
+</head>
+<body id="page-content">
+    
+    <header>
+        <div class="logo">
+          
+        </div>
+        <nav>
+            <ul>
+              <li><a href="/login">Terminar sessão</a></li>
+            </ul>
+          </nav>
+    </header>
+
+	<main>
+      <h1>Criar Testemunho</h1>
+      <table class="tabela">
+        <tr>
+          <td class="bt_publicar">
+            <form action="/novo_testemunho" method="POST">
+              <label for="nome_testemunho">Nome:</label>
+              <input type="text" id="nome_testemunho" name="nome_testemunho" maxlength="50" placeholder="Primeiro e último nome" required>
+      
+              <label for="opiniao">Opinião:</label>
+              <textarea id="opiniao" name="opiniao" maxlength="1000" rows="5" placeholder="Opinião" style="font-size: 16px;" required></textarea>
+      
+              <label for="local_trabalho" class="campos_forms">Local de Trabalho:</label>
+              <input type="text" id="local_trabalho" name="local_trabalho" maxlength="70" placeholder="Local de trabalho" required>
+      
+              <label for="funcao" class="campos_forms">Função:</label>
+              <input type="text" id="funcao" name="funcao" maxlength="50" placeholder="Função" required>
+
+          </td>
+        </tr>
+        <tr style="text-align: right;">
+          <td>
+            <div class="button-group">
+              <button type="button" class="btn-cancelar" onclick="window.location.href='/cancelar'">Cancelar</button>
+              <button type="submit" class="btn-publicar">Publicar</button>
+              
+            </div>
+          </td>
+        </tr>
+      </form>
+      </table>
+      
+      <div id="user-info" data-id="<%= id_utilizador %>"></div>
+	</main>
+	
+	
+  <script src="script_traducao.js"></script>
+</body>
+</html>

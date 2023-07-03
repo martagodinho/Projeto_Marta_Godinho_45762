@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-pt">
+<head>
+	<meta charset="UTF-8">
+	<title>Centro Académico Clínico das Beiras</title>
+    <style>
+        select {
+  width: 200px;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+      </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style_forms.css">
+</head>
+<body id="page-content">
+    
+    <header>
+        <div class="logo">
+          
+        </div>
+        <nav>
+            <ul>
+              <li><a href="/logout">Terminar sessão</a></li>
+            </ul>
+          </nav>
+    </header>
+
+	<main>
+        <h1>Editar ensaios clínicos</h1>
+        <p>Este formulário dedica-se à edição de um post feito anteriormente. Poderá mudar unicamente os campos necessários.</p>
+          <table class="tabela">
+            <tr>
+              <td class="bt_publicar">
+                <form action="/editar_ensaios" method="POST">
+                  <% if (Array.isArray(ensaiosClinicos)) { %>
+                    <% ensaiosClinicos.forEach(function(ensaioClinico) { %>
+                        <label for="nome_ensaio">Nome do Ensaio:</label>
+                        <input type="text" id="nome_ensaio" name="nome_ensaio" maxlength="100" value="<%= ensaioClinico.nome_ensaio %>" required>
+                        
+                        <label for="patologia" class="campos_forms">Patologia:</label>
+                        <input type="text" id="patologia" name="patologia" maxlength="100" value="<%= ensaioClinico.patologia %>" required>
+                
+                        <label for="texto_ensaio">Texto:</label>
+                        <textarea id="texto_ensaio" name="texto_ensaio" maxlength="1000" rows="5" placeholder="Texto" style="font-size:16px" required><%= ensaioClinico.texto_ensaio %></textarea>
+                     
+                        <label for="estado" class="campos_forms">Estado:</label>
+                        <select id="estado" name="estado" required>
+                        <option value="Ativo" <%= ensaioClinico.estado === 'Ativo' ? 'selected' : '' %>>Ativo</option>
+                        <option value="Em pausa" <%= ensaioClinico.estado === 'Em pausa' ? 'selected' : '' %>>Em pausa</option>
+                        <option value="Inativo" <%= ensaioClinico.estado === 'Inativo' ? 'selected' : '' %>>Inativo</option>
+                        </select>
+
+                  
+                      <input type="hidden" name="ensaioID" value="<%= ensaioClinico.idec %>">
+                    <% }); %>
+                  <% } %>
+
+    
+              </td>
+            </tr>
+            <tr style="text-align: right;">
+              <td>
+                <div class="button-group">
+                  <button type="button" class="btn-cancelar" onclick="window.location.href='/cancelar'">Cancelar</button>
+                  <button type="submit" class="btn-publicar">Publicar</button>
+                  
+                </div>
+              </td>
+            </tr>
+          </form>
+          </table>
+	</main>
+	
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-pt">
+<head>
+	<meta charset="UTF-8">
+	<title>Centro Académico Clínico das Beiras</title>
+    <style>
+        select#estado {
+            padding: 8px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 200px;
+          }
+          
+          select#estado option {
+            padding: 8px;
+          }
+    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style_forms.css">
+</head>
+<body id="page-content">
+    
+    <header>
+        <div class="logo">
+          
+        </div>
+        <nav>
+            <ul>
+              <li><a href="/login">Terminar sessão</a></li>
+            </ul>
+          </nav>
+    </header>
+
+	<main>
+      <h1>Criar Ensaio Clínico</h1>
+      <table class="tabela">
+        <tr>
+          <td class="bt_publicar">
+            <form action="/novo_ensaio" method="POST">
+              <label for="nome_ensaio">Nome do Ensaio:</label>
+              <input type="text" id="nome_ensaio" name="nome_ensaio" maxlength="100" placeholder="Nome" required>
+              
+              <label for="patologia" class="campos_forms">Patologia:</label>
+              <input type="text" id="patologia" name="patologia" maxlength="100" placeholder="Patologia" required>
+      
+              <label for="texto_ensaio">Texto:</label>
+              <textarea id="texto_ensaio" name="texto_ensaio" maxlength="1000" rows="5" placeholder="Texto" style="font-size:16px" required></textarea>
+           
+              <label for="estado" class="campos_forms">Estado:</label>
+              <select id="estado" name="estado" required>
+                <option value="Ativo">Ativo</option>
+                <option value="Pausa">Em pausa</option>
+                <option value="Inativo">Inativo</option>
+              </select>
+              
+
+          </td>
+        </tr>
+        <tr style="text-align: right;">
+          <td>
+            <div class="button-group">
+              <button type="button" class="btn-cancelar" onclick="window.location.href='/cancelar'">Cancelar</button>
+              <button type="submit" class="btn-publicar">Publicar</button>
+              
+            </div>
+          </td>
+        </tr>
+      </form>
+      </table>
+      
+      <div id="user-info" data-id="<%= id_utilizador %>"></div>
+	</main>
+	
+	
+  <script src="script_traducao.js"></script>
+</body>
+</html>

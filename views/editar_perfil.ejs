@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-pt">
+<head>
+	<meta charset="UTF-8">
+	<title>Centro Académico Clínico das Beiras</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style_forms.css">
+</head>
+<body id="page-content">
+    
+    <header>
+        <div class="logo">
+          
+        </div>
+        <nav>
+            <ul>
+                <li><a href="/cancelar">Página Pessoal</a></li>
+                <li><a href="/editar_perfil">Editar Perfil</a></li>
+                <li><a href="/logout">Terminar sessão</a></li>
+            </ul>
+          </nav>
+    </header>
+
+	<main>
+        <h1>Editar Perfil</h1>
+        <% if (message) { %>
+            <p><%= message %></p>
+        <% } %>
+        <h2>Alterar Email</h2>
+        <form action="/alterar_email" method="POST">
+            <label for="newEmail">Novo Email:</label>
+            <input type="email" id="newEmail" name="newEmail" required>
+            <br>
+            <button type="submit" class="btn-publicar">Alterar Email</button>
+        </form>
+        <h2>Alterar palavra-passe</h2>
+        <form action="/alterar_palavra_passe" method="POST">
+            <label for="newPassword">Nova palavra-passe:</label>
+            <input type="password" id="newPassword" name="newPassword" minlength="6" required>
+            <br>
+            <label for="confirm_password">Confirmar palavra-passe</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" minlength="6" required>
+            <br>
+            <button type="submit" class="btn-publicar">Alterar palavra-passe</button>
+        </form>
+        <br>
+    </main>
+    
+
+  <script src="script.js"></script>
+</body>
+</html>

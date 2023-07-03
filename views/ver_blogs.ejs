@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-pt">
+<head>
+	<meta charset="UTF-8">
+	<title>Centro Académico Clínico das Beiras</title>
+    <style>
+        .blog {
+          border: 1px solid #ddd;
+          padding: 10px;
+          margin-bottom: 10px;
+          border-radius: 5px;
+          background-color: #eee;
+        }
+        .btn-editar{
+          padding: 10px;
+          border: none;
+          display: block;
+          text-decoration: none;
+          color: #f8f8f8;
+          background-color: #189fde;
+          margin-bottom: 2%;
+          border-radius: 5px;
+          font-weight: bold;
+          cursor: pointer;
+        }
+        .btn-apagar{
+          padding: 10px;
+          border: none;
+          display: block;
+          text-decoration: none;
+          color: #f8f8f8;
+          background-color: #d34c16;
+          margin-bottom: 2%;
+          border-radius: 5px;
+          font-weight: bold;
+          cursor: pointer;
+        }
+        .btn-apagar:hover{
+          padding: 10px;
+          border: none;
+          display: block;
+          text-decoration: none;
+          color: #f8f8f8;
+          background-color: #a53a10;
+          margin-bottom: 2%;
+          border-radius: 5px;
+          font-weight: bold;
+          cursor: pointer;
+        }
+      </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body id="page-content">
+    
+    <header>
+        <div class="logo">
+          
+        </div>
+        <nav>
+            <ul>
+              <li><a href="/cancelar">Página Pessoal</a></li>
+              <li><a href="/editar_perfil">Editar Pefil</a></li>
+              <li><a href="/logout">Terminar sessão</a></li>
+            </ul>
+          </nav>
+    </header>
+
+	<main>
+        <h1>Blogs</h1>
+        <div id="blogs-container">
+          <% blogs.forEach(function(blog) { %>
+            <div class="blog">
+              <h2><%= blog.titulo %></h2>
+              <p><strong>Texto do Post:</strong> <%= blog.texto %></p>
+              <p><strong>Autor(a):</strong> <%= blog.autor %></p>
+              <p><strong>Data da Publicação: </strong><span class="data-publicacao"> <%= blog.data_publicacao %></span></p>
+              <table>
+                <tr>
+              <td style="width: 70px">
+              <button type="button" class="btn-editar" onclick="editarBlog('<%= blog.idb %>')">Editar</button>
+            </td>
+            <td >
+              <form action="/apagar_blog" method="POST">
+                <input type="hidden" name="blogID" value="<%= blog.idb %>">
+                <button type="submit" class="btn-apagar">Apagar</button>
+              </form>
+              </td>
+              
+            </tr>
+            </table>
+            </div>
+          <% }); %>
+        </div>
+      </main>
+      
+	
+  <script src="script.js"></script>
+  <script>
+    function editarBlog(id) {
+      window.location.href = '/editar_blogs?id=' + id;
+    }
+    const dataEventoElements = document.querySelectorAll('.data-publicacao');
+    dataEventoElements.forEach(element => {
+        const dataEvento = element.textContent.trim();
+        const dataFormatada = formatarData(dataEvento);
+        element.textContent = dataFormatada;
+    });
+  </script>
+</body>
+</html>

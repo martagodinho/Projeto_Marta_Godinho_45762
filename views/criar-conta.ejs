@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-pt">
+<head>
+	<meta charset="UTF-8">
+	<title>Centro Académico Clínico das Beiras</title>
+  <style>
+    .match{
+      color: #90a91b;
+    }
+  </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style_login.css">
+</head>
+<body id="page-content">    
+    <header>
+        <div class="logo">
+          <a href="/home_page">
+            <img src="imagens/logo_cacb_v1.png" alt="Logo" width="135" >
+          </a>
+        </div>
+    </header>
+
+	<main>
+        <div class="login-container">
+          <div class="login-box">
+            <h2>Criar conta</h2>
+            <% if (typeof message_sucesso !== 'undefined') { %>
+              <p class="match"><%= message_sucesso %></p>
+            <% } %>
+            <form action="/criar-conta" method="POST" >
+              <div class="form-group">
+                <label for="name">Nome de utilizador</label>
+                <input type="text" name="nome_utilizador" value="<%= formData.nome_utilizador %>" required>
+              </div>
+              <div class="form-group">
+                <label for="email">E-mail</label>
+                <input type="email" name="email" value="<%= formData.email %>" required>                
+              </div>
+              <div class="form-group">
+                <label for="organizacao">Organização a que pertence</label>
+                <input type="text" name="organizacao" value="<%= formData.organizacao %>" required>
+              </div>
+              <div class="form-group">
+                <label for="password">Palavra-passe</label>
+                <input type="password" id="password" name="palavra_passe" minlength="6" required>
+              </div>
+              <div class="form-group">
+                <label for="confirm_password">Confirmar palavra-passe</label>
+                <input type="password" id="confirm_password" name="confirm_password" minlength="6" required>
+              </div>
+              <div class="form-group">
+                <label for="interests">Área que pretende manipular:</label>
+                <div class="checkbox-group">
+                  <div class="checkbox">
+                    <input class="checkbox-input" type="checkbox" id="newsletter" name="newsletter">
+                    <label class="checkbox-label" for="newsletter">Newsletter</label>
+                  </div>
+                  <div class="checkbox">
+                    <input class="checkbox-input" type="checkbox" id="news" name="news">
+                    <label class="checkbox-label" for="news">Notícias</label>
+                  </div>
+                  <div class="checkbox">
+                    <input class="checkbox-input" type="checkbox" id="events" name="events">
+                    <label class="checkbox-label" for="events">Eventos</label>
+                  </div>
+                  <div class="checkbox">
+                    <input class="checkbox-input" type="checkbox" id="education" name="education">
+                    <label class="checkbox-label" for="education">Formação</label>
+                  </div>
+                  <div class="checkbox">
+                    <input class="checkbox-input" type="checkbox" id="blog" name="blog">
+                    <label class="checkbox-label" for="blog">Blog</label>
+                  </div>
+                  <div class="checkbox">
+                    <input class="checkbox-input" type="checkbox" id="testimonials" name="testimonials">
+                    <label class="checkbox-label" for="testimonials">Testemunhos</label>
+                  </div>
+                  <div class="checkbox">
+                    <input class="checkbox-input" type="checkbox" id="clinical-trials" name="clinical-trials">
+                    <label class="checkbox-label" for="clinical-trials">Ensaios clínicos</label>
+                  </div>
+                </div>
+                <% if (message) { %>
+                  <p class="error"><%= message %></p>
+                <% } %>
+                
+              </div>
+              <button type="submit" class="btn">Criar conta</button>
+            </form> 
+            <div class="signup">
+              Já tem uma conta? <a href="/login">Faça login</a>
+            </div>
+          </div>
+        </div>
+      </main>
+      
+
+  <script src="script_traducao.js"></script>
+</body>
+</html>

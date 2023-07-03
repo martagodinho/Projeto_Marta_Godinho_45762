@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-pt">
+<head>
+	<meta charset="UTF-8">
+	<title>Centro Académico Clínico das Beiras</title>
+    <style>
+        select {
+  width: 200px;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+      </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style_forms.css">
+</head>
+<body id="page-content">
+    
+    <header>
+        <div class="logo">
+          
+        </div>
+        <nav>
+            <ul>
+              <li><a href="/logout">Terminar sessão</a></li>
+            </ul>
+          </nav>
+    </header>
+
+	<main>
+        <h1>Editar formações</h1>
+        <p>Este formulário dedica-se à edição de um post feito anteriormente. Poderá mudar unicamente os campos necessários.</p>
+          <table class="tabela">
+            <tr>
+              <td class="bt_publicar">
+                <form action="/editar_newsletters" method="POST" enctype="multipart/form-data">
+                  <% if (Array.isArray(newsletters)) { %>
+                    <% newsletters.forEach(function(newsletter) { %>
+                        <label for="titulo">Título:</label>
+                        <input type="text" id="titulo" name="titulo" maxlength="70" value="<%= newsletter.titulo %>" required>
+                
+                        <label for="assunto">Assunto:</label>
+                        <textarea id="assunto" name="assunto" maxlength="500" rows="5" style="font-size: 16px;" required><%= newsletter.assunto %></textarea>
+                
+                        <label for="data_publicacao" class="campos_forms">Data de publicação:</label>
+                        <input type="date" id="data_publicacao" name="data_publicacao" maxlength="70" value="<%= newsletter.data_publicacao %>">
+                
+                        <label for="doc" class="campos_forms">Documento:</label>
+                        <p><%= newsletter.doc %></p>
+                        <input type="file" id="doc" name="doc" accept=".pdf" value="<%= newsletter.doc %>" >
+                  
+                <input type="hidden" name="newsletterID" value="<%= newsletter.idnews %>">
+                    <% }); %>
+                <% } %>
+
+    
+              </td>
+            </tr>
+            <tr style="text-align: right;">
+              <td>
+                <div class="button-group">
+                  <button type="button" class="btn-cancelar" onclick="window.location.href='/cancelar'">Cancelar</button>
+                  <button type="submit" class="btn-publicar">Publicar</button>
+                  
+                </div>
+              </td>
+            </tr>
+          </form>
+          </table>
+	</main>
+	
+  <script src="script.js"></script>
+
+</body>
+</html>
